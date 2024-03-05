@@ -10,12 +10,16 @@ a {
   // outline: 1px solid lightblue;
 }
 
-.App {
+body {
   background-color: $yellow;
+}
+
+.App {
   padding-top: 40px;
 }
 
 .layoutMain {
+  min-height: 70vh;
   max-width: 1080px;
   margin: 0 auto;
   background-color: $white;

@@ -3,10 +3,10 @@
 .sort {
   display: flex;
   gap: 10px;
+  user-select: none;
+  align-items: center;
 
   .indicator {
-    user-select: none;
-
     svg {
       path {
         fill: $red;
@@ -14,7 +14,6 @@
     }
   }
   .text {
-    user-select: none;
   }
   .options {
     span {

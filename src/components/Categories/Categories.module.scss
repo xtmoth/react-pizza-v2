@@ -2,18 +2,21 @@
 
 .categories {
   user-select: none;
-  margin-bottom: 20px;
+  max-width: 70%;
 
   .list {
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 
     .item {
       cursor: pointer;
-      padding: 10px;
+      padding: 10px 20px;
       border-radius: 10px;
+      background-color: $yellow;
     }
     .item.active {
-      background-color: $red;
+      background-color: $yellowDark;
       color: $white;
     }
   }
