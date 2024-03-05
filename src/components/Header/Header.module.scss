@@ -1,0 +1,65 @@
+@import "../../scss/variables";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+
+  .info {
+    display: flex;
+
+    .logo {
+      display: flex;
+      vertical-align: middle;
+      margin-right: 20px;
+      margin-top: auto;
+      margin-bottom: auto;
+
+      svg {
+        display: flex;
+        vertical-align: middle;
+      }
+    }
+    .text {
+      .title {
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+      .description {
+        color: $yellowDark;
+        font-weight: 600;
+        text-transform: lowercase;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+    background-color: $red;
+    color: $white;
+    border-radius: 10px;
+    max-height: 35px;
+
+    .cost {
+    }
+    .items {
+      display: flex;
+      gap: 8px;
+
+      .cart {
+        svg {
+          path {
+            stroke: $white;
+          }
+        }
+      }
+      .number {
+      }
+    }
+  }
+}

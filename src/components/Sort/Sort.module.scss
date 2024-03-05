@@ -1,0 +1,52 @@
+@import "../../scss/variables";
+
+.sort {
+  display: flex;
+  gap: 10px;
+
+  .indicator {
+    user-select: none;
+
+    svg {
+      path {
+        fill: $red;
+      }
+    }
+  }
+  .text {
+    user-select: none;
+  }
+  .options {
+    span {
+      cursor: pointer;
+      color: $red;
+      border-bottom: 1px dotted $red;
+      position: relative;
+      margin-left: 10px;
+    }
+    .list {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      background-color: $white;
+      border: 1px solid $red;
+
+      .item {
+        padding: 5px 10px;
+
+        &:hover {
+          background-color: $red;
+        }
+      }
+      .item.active {
+        color: $red;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+}

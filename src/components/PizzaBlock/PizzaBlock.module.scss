@@ -1,0 +1,143 @@
+@import "../../scss/variables";
+
+.pizzaBlock {
+  max-width: 350px;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+
+    .about {
+      .image {
+        display: flex;
+        justify-content: center;
+
+        img {
+          width: 100%;
+        }
+      }
+      .title {
+        display: flex;
+        justify-content: center;
+        font-weight: 800;
+      }
+    }
+
+    .options {
+      background-color: $yellow;
+      user-select: none;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px 0;
+
+      .type {
+        .list {
+          display: flex;
+          justify-content: space-around;
+
+          .item {
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 10px;
+          }
+          .item.active {
+            background-color: $yellowDark;
+          }
+        }
+      }
+      .size {
+        .list {
+          display: flex;
+          justify-content: space-around;
+
+          .item {
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            padding: 10px;
+          }
+          .item.active {
+            background-color: $yellowDark;
+          }
+        }
+      }
+    }
+
+    .user {
+      display: flex;
+      justify-content: space-between;
+
+      .price {
+        display: flex;
+        align-items: center;
+      }
+      .cart {
+        display: flex;
+
+        .add {
+          button {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            border: 1px solid $red;
+            border-radius: 10px;
+            color: $red;
+            padding: 10px;
+
+            .plus {
+              display: flex;
+              align-items: center;
+
+              svg {
+                path {
+                  fill: $red;
+                }
+              }
+            }
+            .text {
+            }
+            .indicator {
+              padding: 5px;
+              height: 15px;
+              min-width: 15px;
+              background-color: $red;
+              color: $white;
+              display: flex;
+              justify-content: center;
+              border-radius: 10px;
+              align-items: center;
+            }
+
+            &:hover {
+              background-color: $red;
+
+              .plus {
+                svg {
+                  path {
+                    fill: $white;
+                  }
+                }
+              }
+              .text {
+                color: $white;
+              }
+              .indicator {
+                background-color: $white;
+                color: $red;
+                font-weight: 800;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
