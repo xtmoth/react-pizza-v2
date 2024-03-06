@@ -72,7 +72,7 @@ function PizzaBlock({ title, price, imgUrl, sizes, types }) {
                   </svg>
                 </div>
                 <div className={styles.text}>Добавить</div>
-                <div className={styles.indicator}>100</div>
+                <div className={styles.indicator}>0</div>
               </button>
             </div>
           </div>
