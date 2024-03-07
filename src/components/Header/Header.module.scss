@@ -6,8 +6,21 @@
   padding-bottom: 20px;
   margin-bottom: 30px;
 
+  @media screen and (max-width: 710px) {
+    flex-direction: column;
+  }
+
   .info {
     display: flex;
+
+    @media screen and (max-width: 710px) {
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    @media screen and (max-width: 470px) {
+      flex-direction: column;
+      text-align: center;
+    }
 
     .logo {
       display: flex;
@@ -15,6 +28,12 @@
       margin-right: 20px;
       margin-top: auto;
       margin-bottom: auto;
+
+      @media screen and (max-width: 470px) {
+        justify-content: center;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
 
       svg {
         display: flex;
@@ -44,6 +63,12 @@
     color: $white;
     border-radius: 10px;
     max-height: 35px;
+
+    @media screen and (max-width: 710px) {
+      justify-content: center;
+      max-height: none;
+      margin: 0 auto;
+    }
 
     .cost {
     }

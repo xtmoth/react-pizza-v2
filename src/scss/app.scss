@@ -10,17 +10,16 @@ a {
   // outline: 1px solid lightblue;
 }
 
-html,
-body {
-  min-width: 450px;
-}
-
 body {
   background-color: $yellow;
 }
 
 .App {
-  padding-top: 40px;
+  padding: 40px 0;
+
+  @media screen and (max-width: 400px) {
+    padding: 20px 5px;
+  }
 }
 
 .layoutMain {
@@ -60,6 +59,10 @@ body {
 .layout1 {
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 1020px) {
+    flex-direction: column;
+  }
 }
 .layout2 {
   display: grid;

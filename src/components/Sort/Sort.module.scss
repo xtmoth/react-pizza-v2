@@ -6,6 +6,17 @@
   user-select: none;
   padding-top: 10px;
 
+  @media screen and (max-width: 1020px) {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 370px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    font-size: 20px;
+  }
+
   .indicator {
     svg {
       path {
@@ -22,6 +33,10 @@
       border-bottom: 1px dotted $red;
       position: relative;
       margin-left: 10px;
+
+      @media screen and (max-width: 370px) {
+        margin-left: 0;
+      }
     }
     .list {
       cursor: pointer;
@@ -32,8 +47,18 @@
       background-color: $white;
       border: 1px solid $red;
 
+      @media screen and (max-width: 370px) {
+        margin: 20px 10px 0;
+        left: 0;
+        right: 0;
+      }
+
       .item {
         padding: 5px 10px;
+
+        @media screen and (max-width: 370px) {
+          text-align: center;
+        }
 
         &:hover {
           background-color: $red;

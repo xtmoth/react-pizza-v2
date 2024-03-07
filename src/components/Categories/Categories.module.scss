@@ -4,10 +4,20 @@
   user-select: none;
   max-width: 70%;
 
+  @media screen and (max-width: 1020px) {
+    max-width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+  }
+
   .list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+
+    @media screen and (max-width: 1020px) {
+      justify-content: center;
+    }
 
     .item {
       cursor: pointer;

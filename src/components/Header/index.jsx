@@ -97,7 +97,7 @@ function Header() {
       </Link>
 
       <Link to="cart">
-        <div className={styles.user}>
+        <div className={styles.user} title="Перейти в корзину">
           <div className={styles.cost}>520 RUB</div>
           <div className={styles.items}>
             <div className={styles.cart}>
