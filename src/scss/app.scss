@@ -10,6 +10,11 @@ a {
   // outline: 1px solid lightblue;
 }
 
+html,
+body {
+  min-width: 450px;
+}
+
 body {
   background-color: $yellow;
 }
@@ -25,6 +30,31 @@ body {
   background-color: $white;
   border-radius: 10px;
   padding: 40px 30px 20px;
+
+  @media screen and (max-width: 1200px) {
+    max-width: 900px;
+  }
+  @media screen and (max-width: 1020px) {
+    max-width: 700px;
+  }
+  @media screen and (max-width: 810px) {
+    max-width: 600px;
+  }
+  @media screen and (max-width: 710px) {
+    max-width: 500px;
+  }
+  @media screen and (max-width: 610px) {
+    max-width: 450px;
+  }
+  @media screen and (max-width: 570px) {
+    max-width: 400px;
+  }
+  @media screen and (max-width: 510px) {
+    max-width: 350px;
+  }
+  @media screen and (max-width: 470px) {
+    max-width: 300px;
+  }
 }
 
 .layout1 {
@@ -37,6 +67,18 @@ body {
   gap: 40px 30px;
   justify-content: space-between;
   margin-top: 30px;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(3, auto);
+  }
+  @media screen and (max-width: 1020px) {
+    grid-template-columns: repeat(2, auto);
+  }
+  @media screen and (max-width: 810px) {
+    grid-template-columns: repeat(1, auto);
+    justify-content: center;
+    gap: 70px;
+  }
 }
 
 * {

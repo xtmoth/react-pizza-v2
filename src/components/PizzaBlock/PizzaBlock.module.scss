@@ -2,6 +2,9 @@
 
 .pizzaBlock {
   max-width: 350px;
+  @media screen and (max-width: 810px) {
+    max-width: 450px;
+  }
 
   .info {
     display: flex;

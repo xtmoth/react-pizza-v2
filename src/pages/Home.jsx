@@ -19,12 +19,12 @@ function Home() {
 
   return (
     <>
-      {isLoading && "Загрузка..."}
       <div className="layout1">
         <Categories />
         <Sort />
       </div>
       <div className="layout2">
+        {isLoading && "Загружаем пиццы..."}
         {isLoading
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
           : pizzas.map((obj) =>
