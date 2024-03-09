@@ -1,0 +1,127 @@
+@import "../../scss/variables";
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+    .clear {
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        svg {
+          path {
+            stroke: $yellowDark;
+          }
+        }
+        span {
+          color: $yellowDark;
+        }
+      }
+
+      svg {
+        margin-right: 10px;
+        vertical-align: middle;
+
+        path {
+          stroke: $yellow;
+        }
+      }
+      span {
+        vertical-align: middle;
+        color: $yellow;
+      }
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .number {
+      }
+      .cost {
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+
+    .back {
+      display: flex;
+      align-items: center;
+      border: 1px solid $yellow;
+      border-radius: 10px;
+
+      &:hover {
+        border-color: $yellowDark;
+
+        a {
+          color: $yellowDark;
+
+          svg {
+            path {
+              stroke: $yellowDark;
+            }
+          }
+        }
+      }
+
+      a {
+        padding: 14px;
+        color: $yellow;
+
+        svg {
+          margin-right: 10px;
+
+          path {
+            stroke: $yellow;
+          }
+        }
+      }
+    }
+    .pay {
+      display: flex;
+      align-items: center;
+      background-color: $red;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: $redDark;
+      }
+
+      button {
+        padding: 15px;
+        color: $white;
+        font-size: 16px;
+      }
+    }
+  }
+}

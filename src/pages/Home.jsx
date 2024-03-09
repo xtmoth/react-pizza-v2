@@ -15,6 +15,7 @@ function Home() {
         setPizzas(arr);
         setIsLoading(false);
       });
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -23,8 +24,10 @@ function Home() {
         <Categories />
         <Sort />
       </div>
+      {isLoading && (
+        <div style={{ margin: "30px 0 30px" }}>Загружаем пиццы...</div>
+      )}
       <div className="layout2">
-        {isLoading && "Загружаем пиццы..."}
         {isLoading
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
           : pizzas.map((obj) =>

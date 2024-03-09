@@ -70,6 +70,10 @@
       margin: 0 auto;
     }
 
+    &:hover {
+      background-color: $redDark;
+    }
+
     .cost {
     }
     .items {

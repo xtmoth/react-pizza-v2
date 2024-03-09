@@ -1,0 +1,18 @@
+@import "../../scss/variables";
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .info {
+    display: flex;
+    align-items: center;
+  }
+  .number {
+    display: flex;
+  }
+  .delete {
+    cursor: pointer;
+  }
+}
