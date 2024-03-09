@@ -3,7 +3,7 @@ import styles from "./CartItem.module.scss";
 
 function CartItem() {
   return (
-    <div className={styles.cartItem}>
+    <div className={styles.root}>
       <div className={styles.info}>
         <div className={styles.image}>
           <img src="" alt="Pizza" />

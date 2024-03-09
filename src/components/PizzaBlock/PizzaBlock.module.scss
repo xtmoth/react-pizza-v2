@@ -1,6 +1,6 @@
 @import "../../scss/variables";
 
-.pizzaBlock {
+.root {
   max-width: 350px;
   @media screen and (max-width: 810px) {
     max-width: 450px;

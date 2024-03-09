@@ -7,7 +7,7 @@ function PizzaBlock({ title, price, imgUrl, sizes, types }) {
   const typeNames = ["тонкое", "традиционное"];
 
   return (
-    <div className={styles.pizzaBlock}>
+    <div className={styles.root}>
       <div className={styles.info}>
         <div className={styles.about}>
           <div className={styles.image}>

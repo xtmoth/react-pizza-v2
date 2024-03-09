@@ -56,12 +56,18 @@ body {
   }
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
 .layout1 {
   display: flex;
   justify-content: space-between;
 
   @media screen and (max-width: 1020px) {
     flex-direction: column;
+    align-items: center;
   }
 }
 .layout2 {

@@ -4,7 +4,7 @@ import styles from "./NotFoundBlock.module.scss";
 
 function NotFoundBlock() {
   return (
-    <div className={styles.notFoundBlock}>
+    <div className={styles.root}>
       <span className={styles.emoji}>😕</span>
       <h1 className={styles.title}>Страница не найдена</h1>
       <p className={styles.text}>

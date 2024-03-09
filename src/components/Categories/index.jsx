@@ -12,7 +12,7 @@ function Categories({ categoryId, onChangeCategory }) {
   ];
 
   return (
-    <div className={styles.categories}>
+    <div className={styles.root}>
       <ul className={styles.list}>
         {categoryNames.map((categoryName, index) => (
           <li

@@ -1,23 +1,17 @@
 @import "../../scss/variables";
 
-.categories {
+.root {
   user-select: none;
-  max-width: 70%;
-
-  @media screen and (max-width: 1020px) {
-    max-width: 100%;
-    display: flex;
-    margin-bottom: 30px;
-  }
+  display: flex;
+  margin-bottom: 30px;
 
   .list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
+    width: 100%;
 
-    @media screen and (max-width: 1020px) {
-      justify-content: center;
-    }
     @media screen and (max-width: 370px) {
       flex-direction: column;
       width: 100%;

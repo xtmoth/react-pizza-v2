@@ -5,7 +5,7 @@ import styles from "./Cart.module.scss";
 
 function Cart() {
   return (
-    <div className={styles.cart}>
+    <div className={styles.root}>
       <div className={styles.top}>
         <div className={styles.title}>
           <svg

@@ -1,6 +1,6 @@
 @import "../../scss/variables";
 
-.sort {
+.root {
   display: flex;
   gap: 10px;
   user-select: none;
@@ -8,6 +8,7 @@
 
   @media screen and (max-width: 1020px) {
     justify-content: center;
+    margin-bottom: 30px;
   }
 
   @media screen and (max-width: 370px) {
@@ -25,6 +26,9 @@
     }
   }
   .text {
+    span {
+      vertical-align: middle;
+    }
   }
   .options {
     span {

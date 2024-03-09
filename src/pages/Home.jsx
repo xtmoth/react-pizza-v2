@@ -1,5 +1,6 @@
 import React from "react";
 import Categories from "../components/Categories";
+import Search from "../components/Search";
 import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
@@ -31,15 +32,18 @@ function Home() {
 
   return (
     <>
-      <div className="layout1">
+      <div className="layout">
         <Categories
           categoryId={categoryId}
           onChangeCategory={(id) => setCategoryId(id)}
         />
-        <Sort
-          sortTypeObj={sortTypeObj}
-          onChangeSort={(index) => setSortTypeObj(index)}
-        />
+        <div className="layout1">
+          <Sort
+            sortTypeObj={sortTypeObj}
+            onChangeSort={(index) => setSortTypeObj(index)}
+          />
+          <Search />
+        </div>
       </div>
       {isLoading && (
         <div style={{ margin: "30px 0 30px" }}>Загружаем пиццы...</div>

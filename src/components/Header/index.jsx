@@ -3,7 +3,7 @@ import styles from "./Header.module.scss";
 
 function Header() {
   return (
-    <div className={styles.header}>
+    <div className={styles.root}>
       <Link to="/">
         <div className={styles.info}>
           <div className={styles.logo}>
