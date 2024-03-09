@@ -1,15 +1,28 @@
 import React from "react";
 import styles from "./Sort.module.scss";
 
-function Sort() {
+function Sort({ sortTypeObj, onChangeSort }) {
   const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState(1);
-  const options = ["популярности", "цене", "алфавиту"];
-  const onClickOption = (index) => {
-    setSelected(index);
+
+  const sortTypes = [
+    { name: "популярности ⬇", sortProperty: "rating" },
+    {
+      name: "популярности ⬆",
+      sortProperty: "-rating",
+    },
+    { name: "цене ⬆", sortProperty: "-price" },
+    { name: "цене ⬇", sortProperty: "price" },
+    { name: "алфавиту ⬆", sortProperty: "-title" },
+    { name: "алфавиту ⬇", sortProperty: "title" },
+  ];
+
+  const onClickSort = (index) => {
+    onChangeSort(index);
     setOpen(false);
   };
-  const optionSelected = options[selected];
+  // const sortTypeSelected = sortTypes[sortTypeIndex].name;
+
+  // console.log(sortTypeIndex);
 
   return (
     <div className={styles.sort}>
@@ -26,18 +39,20 @@ function Sort() {
       </div>
       <div className={styles.text}>сортировать по</div>
       <div className={styles.options}>
-        <span onClick={() => setOpen(!open)}>{optionSelected}</span>
+        <span onClick={() => setOpen(!open)}>{sortTypeObj.name}</span>
         {open && (
           <ul className={styles.list}>
-            {options.map((option, index) => (
+            {sortTypes.map((sortType, index) => (
               <li
                 className={`${styles.item} ${
-                  selected === index ? `${styles.active}` : ""
+                  sortTypeObj.sortProperty === sortType.sortProperty
+                    ? `${styles.active}`
+                    : ""
                 }`}
                 key={index}
-                onClick={() => onClickOption(index)}
+                onClick={() => onClickSort(sortType)}
               >
-                {option}
+                {sortType.name}
               </li>
             ))}
           </ul>
