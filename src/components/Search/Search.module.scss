@@ -3,7 +3,7 @@
 .root {
   position: relative;
 
-  svg {
+  .search {
     width: 24px;
     height: 24px;
     position: absolute;
@@ -17,9 +17,8 @@
     display: flex;
     align-items: center;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 30px 10px 50px;
     background-color: $white;
-    padding-left: 50px;
 
     @media screen and (max-width: 470px) {
       width: 300px;
@@ -32,6 +31,28 @@
     &:focus {
       outline: none;
       border-color: $redDark;
+    }
+  }
+  .clear {
+    cursor: pointer;
+    position: absolute;
+    right: 12px;
+    top: 12.5px;
+    opacity: 0.5;
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+      transform: rotate(45deg);
+
+      path {
+        fill: $red;
+      }
     }
   }
 }
