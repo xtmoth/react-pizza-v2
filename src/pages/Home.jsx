@@ -1,4 +1,5 @@
 import React from "react";
+import { SearchContext } from "../App";
 import Categories from "../components/Categories";
 import Search from "../components/Search";
 import Sort from "../components/Sort";
@@ -6,7 +7,7 @@ import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from "../components/Pagination";
 
-function Home({ searchValue, setSearchValue }) {
+function Home() {
   const [pizzas, setPizzas] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [categoryId, setCategoryId] = React.useState(0);
@@ -20,16 +21,11 @@ function Home({ searchValue, setSearchValue }) {
     <Skeleton key={index} />
   ));
 
-  const pizzaBlocks = pizzas
-    // .filter((obj) => {
-    //   if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
-    //     return true;
-    //   }
-    //   return false;
-    // })
-    .map((obj) =>
-      isLoading ? <Skeleton /> : <PizzaBlock {...obj} key={obj.imgUrl} />
-    );
+  const pizzaBlocks = pizzas.map((obj) =>
+    isLoading ? <Skeleton /> : <PizzaBlock {...obj} key={obj.imgUrl} />
+  );
+
+  const { searchValue } = React.useContext(SearchContext);
 
   React.useEffect(() => {
     setIsLoading(true);
@@ -60,9 +56,11 @@ function Home({ searchValue, setSearchValue }) {
             sortTypeObj={sortTypeObj}
             onChangeSort={(index) => setSortTypeObj(index)}
           />
-          <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+          <Search />
         </div>
       </div>
+      <Pagination onChangePage={(number) => setPageCurrent(number)} />
+
       {isLoading && (
         <div style={{ margin: "30px 0 30px" }}>Загружаем пиццы...</div>
       )}
