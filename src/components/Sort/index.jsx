@@ -1,23 +1,30 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setSortTypeObj } from "../../redux/slices/filterSlice";
+
 import styles from "./Sort.module.scss";
 
-function Sort({ sortTypeObj, onChangeSort }) {
+const sortTypes = [
+  { name: "популярности ⬇", sortProperty: "rating" },
+  {
+    name: "популярности ⬆",
+    sortProperty: "-rating",
+  },
+  { name: "цене ⬆", sortProperty: "-price" },
+  { name: "цене ⬇", sortProperty: "price" },
+  { name: "алфавиту ⬆", sortProperty: "-title" },
+  { name: "алфавиту ⬇", sortProperty: "title" },
+];
+
+function Sort() {
   const [open, setOpen] = React.useState(false);
 
-  const sortTypes = [
-    { name: "популярности ⬇", sortProperty: "rating" },
-    {
-      name: "популярности ⬆",
-      sortProperty: "-rating",
-    },
-    { name: "цене ⬆", sortProperty: "-price" },
-    { name: "цене ⬇", sortProperty: "price" },
-    { name: "алфавиту ⬆", sortProperty: "-title" },
-    { name: "алфавиту ⬇", sortProperty: "title" },
-  ];
+  const dispatch = useDispatch();
+  const sortTypeObj = useSelector((state) => state.filter.sortTypeObj);
 
-  const onClickSort = (index) => {
-    onChangeSort(index);
+  const onClickSort = (obj) => {
+    dispatch(setSortTypeObj(obj));
     setOpen(false);
   };
 

@@ -1,5 +1,9 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { SearchContext } from "../App";
+import { setCategoryId } from "../redux/slices/filterSlice";
+
 import Categories from "../components/Categories";
 import Search from "../components/Search";
 import Sort from "../components/Sort";
@@ -8,14 +12,12 @@ import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from "../components/Pagination";
 
 function Home() {
+  const dispatch = useDispatch();
+  const { categoryId, sortTypeObj } = useSelector((state) => state.filter);
+
   const [pizzas, setPizzas] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [categoryId, setCategoryId] = React.useState(0);
   const [pageCurrent, setPageCurrent] = React.useState(1);
-  const [sortTypeObj, setSortTypeObj] = React.useState({
-    name: "популярности ⬇",
-    sortProperty: "rating",
-  });
 
   const skeletonBlocks = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
@@ -26,6 +28,10 @@ function Home() {
   );
 
   const { searchValue } = React.useContext(SearchContext);
+
+  const onChangeCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   React.useEffect(() => {
     setIsLoading(true);
@@ -49,13 +55,10 @@ function Home() {
       <div className="layout">
         <Categories
           categoryId={categoryId}
-          onChangeCategory={(id) => setCategoryId(id)}
+          onChangeCategory={(id) => onChangeCategory(id)}
         />
         <div className="layout1">
-          <Sort
-            sortTypeObj={sortTypeObj}
-            onChangeSort={(index) => setSortTypeObj(index)}
-          />
+          <Sort />
           <Search />
         </div>
       </div>

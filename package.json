@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://kristina-mukha.github.io/react-pizza-v2/",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,6 +13,7 @@
     "react-content-loader": "^6.2.1",
     "react-dom": "^18.2.0",
     "react-paginate": "^8.2.0",
+    "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",
     "sass": "^1.71.1",
