@@ -4,6 +4,12 @@ import styles from "./Search.module.scss";
 
 function Search() {
   const { searchValue, setSearchValue } = React.useContext(SearchContext);
+  const inputRef = React.useRef();
+
+  const onClickClear = () => {
+    setSearchValue("");
+    inputRef.current.focus();
+  };
 
   return (
     <div className={styles.root}>
@@ -44,6 +50,7 @@ function Search() {
       </div>
 
       <input
+        ref={inputRef}
         type="search"
         placeholder="Поиск пиццы..."
         onChange={(event) => {
@@ -55,7 +62,7 @@ function Search() {
         <button
           className={styles.clear}
           title="Очистить"
-          onClick={() => setSearchValue("")}
+          onClick={onClickClear}
         >
           <svg
             viewBox="0 0 10 10"
