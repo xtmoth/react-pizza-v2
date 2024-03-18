@@ -1,9 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { clearItems } from "../../redux/slices/cartSlice";
+
+import CartEmpty from "../../components/CartEmpty";
 import CartItem from "../../components/CartItem";
+
 import styles from "./Cart.module.scss";
 
 function Cart() {
+  const dispatch = useDispatch();
+  const { totalPrice, items } = useSelector((state) => state.cart);
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
+  const onClickClear = () => {
+    if (window.confirm("Вы действительно хотите очистить Корзину?"))
+      dispatch(clearItems());
+  };
+
+  if (!totalPrice) {
+    return <CartEmpty />;
+  }
+
   return (
     <div className={styles.root}>
       <div className={styles.top}>
@@ -39,7 +59,7 @@ function Cart() {
           </svg>
           <h2>Корзина</h2>
         </div>
-        <div className={styles.clear}>
+        <div className={styles.clear} onClick={onClickClear}>
           <svg
             width="20"
             height="20"
@@ -78,14 +98,16 @@ function Cart() {
 
       <div className={styles.content}>
         <div className={styles.items}>
-          <CartItem />
+          {items.map((item) => (
+            <CartItem key={item.imgUrl} {...item} />
+          ))}
         </div>
         <div className={styles.info}>
           <span className={styles.number}>
-            Всего пицц: <b>{25} шт.</b>
+            Всего пицц: <b>{totalCount} шт.</b>
           </span>
           <span className={styles.cost}>
-            Сумма заказа: <b>{25} ₽</b>
+            Сумма заказа: <b>{totalPrice} ₽</b>
           </span>
         </div>
       </div>

@@ -78,9 +78,14 @@
     }
     .items {
       display: flex;
+      vertical-align: middle;
       gap: 8px;
 
       .cart {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        border-left: 0.5px solid $white;
         svg {
           path {
             stroke: $white;

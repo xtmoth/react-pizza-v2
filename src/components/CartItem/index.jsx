@@ -1,32 +1,57 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
+import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice";
+
 import styles from "./CartItem.module.scss";
 
-function CartItem() {
+function CartItem({ id, title, type, size, price, count, imgUrl }) {
+  const dispatch = useDispatch();
+
+  const onClickPlus = () => {
+    dispatch(
+      addItem({
+        id,
+      })
+    );
+  };
+
+  const onClickMinus = () => {
+    dispatch(minusItem(id));
+  };
+
+  const onClickRemove = () => {
+    if (window.confirm("Вы действительно хотите удалить товар?"))
+      dispatch(removeItem(id));
+  };
+
   return (
     <div className={styles.root}>
       <div className={styles.info}>
         <div className={styles.image}>
-          <img src="" alt="Pizza" />
+          <img src={imgUrl} alt="Pizza" />
         </div>
         <div className={styles.about}>
           <div className={styles.title}>
-            <h3>Title</h3>
+            <h3>{title}</h3>
           </div>
           <div className={styles.options}>
-            Type, Size <span> см.</span>
+            {type}, {size} <span> см.</span>
           </div>
         </div>
       </div>
 
       <div className={styles.number}>
-        <button>-</button>
-        <div>Number</div>
-        <button>+</button>
+        <button onClick={onClickMinus}>-</button>
+        <div>{count}</div>
+        <button onClick={onClickPlus}>+</button>
       </div>
       <div className={styles.cost}>
-        Cost <span> ₽</span>
+        {price * count} <span> ₽</span>
       </div>
-      <div className={styles.delete}>x</div>
+      <div className={styles.delete} onClick={onClickRemove}>
+        x
+      </div>
     </div>
   );
 }

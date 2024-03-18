@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import styles from "./Header.module.scss";
 
 function Header() {
+  const { items, totalPrice } = useSelector((state) => state.cart);
+
+  const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
   return (
     <div className={styles.root}>
       <Link to="/">
@@ -98,7 +104,7 @@ function Header() {
 
       <Link to="cart">
         <div className={styles.user} title="Перейти в корзину">
-          <div className={styles.cost}>520 RUB</div>
+          <div className={styles.cost}>{totalPrice} RUB</div>
           <div className={styles.items}>
             <div className={styles.cart}>
               <svg
@@ -128,7 +134,7 @@ function Header() {
                 ></path>
               </svg>
             </div>
-            <div className={styles.number}>3</div>
+            <div className={styles.number}>{totalCount}</div>
           </div>
         </div>
       </Link>

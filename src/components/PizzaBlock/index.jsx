@@ -1,10 +1,34 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addItem } from "../../redux/slices/cartSlice";
+
 import styles from "./PizzaBlock.module.scss";
 
-function PizzaBlock({ title, price, imgUrl, sizes, types }) {
+function PizzaBlock({ id, title, price, imgUrl, sizes, types }) {
+  const dispatch = useDispatch();
+  const cartItem = useSelector((state) =>
+    state.cart.items.find((obj) => obj.id === id)
+  );
+
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
+
   const typeNames = ["тонкое", "традиционное"];
+
+  const addedCount = cartItem ? cartItem.count : 0;
+
+  const onClickAdd = () => {
+    const item = {
+      id,
+      title,
+      price,
+      imgUrl,
+      type: typeNames[activeType],
+      size: sizes[activeSize],
+    };
+    dispatch(addItem(item));
+  };
 
   return (
     <div className={styles.root}>
@@ -52,7 +76,7 @@ function PizzaBlock({ title, price, imgUrl, sizes, types }) {
           <div className={styles.price}>от {price} RUB</div>
           <div className={styles.cart}>
             <div className={styles.add}>
-              <button>
+              <button onClick={onClickAdd}>
                 <div className={styles.plus}>
                   <svg
                     width="10"
@@ -72,7 +96,9 @@ function PizzaBlock({ title, price, imgUrl, sizes, types }) {
                   </svg>
                 </div>
                 <div className={styles.text}>Добавить</div>
-                <div className={styles.indicator}>0</div>
+                {addedCount > 0 && (
+                  <div className={styles.indicator}>{addedCount}</div>
+                )}
               </button>
             </div>
           </div>
