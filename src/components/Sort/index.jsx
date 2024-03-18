@@ -18,18 +18,33 @@ export const sortTypes = [
 ];
 
 function Sort() {
-  const [open, setOpen] = React.useState(false);
-
   const dispatch = useDispatch();
   const sortTypeObj = useSelector((state) => state.filter.sortTypeObj);
+  const sortRef = React.useRef();
+
+  const [open, setOpen] = React.useState(false);
 
   const onClickSort = (obj) => {
     dispatch(setSortTypeObj(obj));
     setOpen(false);
   };
 
+  // Closing of Sort pop-up when clicking outside
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.composedPath().includes(sortRef.current)) {
+        setOpen(false);
+      }
+    };
+    // Works when Sort component is mounted (+)
+    document.body.addEventListener("click", handleClickOutside);
+
+    // Works when Sort component is UNmounted (-)
+    return () => document.body.removeEventListener("click", handleClickOutside);
+  }, []);
+
   return (
-    <div className={styles.root}>
+    <div className={styles.root} ref={sortRef}>
       <div className={styles.indicator}>
         <svg
           width="10"

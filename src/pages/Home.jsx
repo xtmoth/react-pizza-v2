@@ -60,7 +60,25 @@ function Home() {
       });
   };
 
-  // Парсинг заданных параметров фильтрации и/или сортировки и сохранение их в Редакс
+  // 1. Вшивание параметров фильтрации и/или сортировки в адресную строку при их изменении
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        pageCurrent,
+        categoryId,
+        sortProperty: sortTypeObj.sortProperty,
+      });
+
+      navigate(`?${queryString}`);
+
+      console.log(
+        "Параметры фильтрации и/или сортировки были:\n 1. изменены\n 2. вшиты в адресную строку\nТекущий статус: параметры готовы к парсингу и сохранению в Редакс"
+      );
+    }
+    isMounted.current = true;
+  }, [pageCurrent, categoryId, sortTypeObj.sortProperty]);
+
+  // 2. Парсинг заданных параметров фильтрации и/или сортировки и сохранение их в Редакс
   React.useEffect(() => {
     if (window.location.hash === "#/") {
       window.location.hash.substring(3);
@@ -102,7 +120,7 @@ function Home() {
     }
   }, []);
 
-  // Получение пицц
+  // 3. Получение пицц
   React.useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -126,24 +144,6 @@ function Home() {
 
     isSearch.current = false;
   }, [pageCurrent, categoryId, sortTypeObj.sortProperty, searchValue]);
-
-  // Вшивание параметров фильтрации и/или сортировки в адресную строку при их изменении
-  React.useEffect(() => {
-    if (isMounted.current) {
-      const queryString = qs.stringify({
-        pageCurrent,
-        categoryId,
-        sortProperty: sortTypeObj.sortProperty,
-      });
-
-      navigate(`?${queryString}`);
-
-      console.log(
-        "Параметры фильтрации и/или сортировки были:\n 1. изменены\n 2. вшиты в адресную строку\nТекущий статус: параметры готовы к парсингу и сохранению в Редакс"
-      );
-    }
-    isMounted.current = true;
-  }, [pageCurrent, categoryId, sortTypeObj.sortProperty]);
 
   const skeletonBlocks = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
