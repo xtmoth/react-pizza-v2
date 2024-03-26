@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import qs from "qs";
 
 import { SearchContext } from "../App";
@@ -11,6 +10,7 @@ import {
   setPageCurrent,
   setFilters,
 } from "../redux/slices/filterSlice";
+import { fetchPizzas } from "../redux/slices/pizzasSlice";
 
 import Categories from "../components/Categories";
 import Search from "../components/Search";
@@ -28,9 +28,7 @@ function Home() {
   const { categoryId, sortTypeObj, pageCurrent } = useSelector(
     (state) => state.filter
   );
-
-  const [pizzas, setPizzas] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const { items, status } = useSelector((state) => state.pizza);
 
   const { searchValue } = React.useContext(SearchContext);
 
@@ -42,22 +40,23 @@ function Home() {
     dispatch(setPageCurrent(number));
   };
 
-  const fetchPizzas = () => {
-    setIsLoading(true);
-
+  const getPizzas = async () => {
     const category = categoryId > 0 ? `category=${categoryId}` : "";
     const order = sortTypeObj.sortProperty.includes("-") ? "asc" : "desc";
     const sortBy = sortTypeObj.sortProperty.replace("-", "");
     const search = searchValue ? `&search=${searchValue}` : "";
 
-    axios
-      .get(
-        `https://65e7602b53d564627a8eab8e.mockapi.io/items?page=${pageCurrent}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-      )
-      .then((res) => {
-        setPizzas(res.data);
-        setIsLoading(false);
-      });
+    dispatch(
+      fetchPizzas({
+        category,
+        order,
+        sortBy,
+        search,
+        pageCurrent,
+      })
+    );
+
+    window.scrollTo(0, 0);
   };
 
   // 1. Вшивание параметров фильтрации и/или сортировки в адресную строку при их изменении
@@ -122,8 +121,6 @@ function Home() {
 
   // 3. Получение пицц
   React.useEffect(() => {
-    window.scrollTo(0, 0);
-
     if (!isSearch.current) {
       console.log(
         "Запрашиваем пиццы по заданным параметрам фильтрации и/или сортировки: \n",
@@ -139,7 +136,7 @@ function Home() {
         "searchValue =",
         searchValue
       );
-      fetchPizzas();
+      getPizzas();
     }
 
     isSearch.current = false;
@@ -149,8 +146,12 @@ function Home() {
     <Skeleton key={index} />
   ));
 
-  const pizzaBlocks = pizzas.map((obj) =>
-    isLoading ? <Skeleton /> : <PizzaBlock {...obj} key={obj.imgUrl} />
+  const pizzaBlocks = items.map((obj) =>
+    status === "loading" ? (
+      <Skeleton />
+    ) : (
+      <PizzaBlock {...obj} key={obj.imgUrl} />
+    )
   );
 
   return (
@@ -167,10 +168,24 @@ function Home() {
       </div>
       <Pagination pageCurrent={pageCurrent} onChangePage={onChangePage} />
 
-      {isLoading && (
+      {status === "loading" && (
         <div style={{ margin: "30px 0 30px" }}>Загружаем пиццы...</div>
       )}
-      <div className="layout2">{isLoading ? skeletonBlocks : pizzaBlocks}</div>
+
+      {status === "error" ? (
+        <div>
+          <h2>Произошла ошибка 😕</h2>
+          <p>
+            К сожалению, не удалось получить пиццы. Попробуйте повторить попытку
+            позже.
+          </p>
+        </div>
+      ) : (
+        <div className="layout2">
+          {status === "loading" ? skeletonBlocks : pizzaBlocks}
+        </div>
+      )}
+
       <Pagination pageCurrent={pageCurrent} onChangePage={onChangePage} />
     </>
   );
