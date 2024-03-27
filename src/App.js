@@ -9,28 +9,24 @@ import "./scss/app.scss";
 export const SearchContext = React.createContext();
 
 function App() {
-  const [searchValue, setSearchValue] = React.useState("");
-
   return (
     <div className="app">
       <div className="layoutMain">
-        <SearchContext.Provider value={{ searchValue, setSearchValue }}>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <button
-            className="btnToTop"
-            type="button"
-            onClick={() => {
-              window.scrollTo(0, 0);
-            }}
-          >
-            Вернуться к началу страницы
-          </button>
-        </SearchContext.Provider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <button
+          className="btnToTop"
+          type="button"
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        >
+          Вернуться к началу страницы
+        </button>
       </div>
     </div>
   );
