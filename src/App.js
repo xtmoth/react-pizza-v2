@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home.jsx";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound.jsx";
+import PizzaFull from "./pages/PizzaFull";
 import "./scss/app.scss";
 
 export const SearchContext = React.createContext();
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/pizza/:id" element={<PizzaFull />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <button

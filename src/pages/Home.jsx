@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import qs from "qs";
 
 import { sortTypes } from "../components/Sort";
@@ -147,7 +147,9 @@ function Home() {
     status === "loading" ? (
       <Skeleton />
     ) : (
-      <PizzaBlock {...obj} key={obj.imgUrl} />
+      <Link to={`/pizza/${obj.id}`} key={obj.imgUrl}>
+        <PizzaBlock {...obj} />
+      </Link>
     )
   );
 
