@@ -4,8 +4,12 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import styles from "./PizzaFull.module.scss";
 
-function PizzaFull() {
-  const [pizza, setPizza] = React.useState();
+const PizzaFull: React.FC = () => {
+  const [pizza, setPizza] = React.useState<{
+    imgUrl: string;
+    title: string;
+    price: number;
+  }>();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -26,7 +30,7 @@ function PizzaFull() {
   }, []);
 
   if (!pizza) {
-    return "Загрузка...";
+    return <>Загрузка...</>;
   }
 
   return (
@@ -37,14 +41,11 @@ function PizzaFull() {
       <div className={styles.title}>
         <h2>{pizza.title}</h2>
       </div>
-      {/* <div className={styles.description}>
-        <p>Pizza Description</p>
-      </div> */}
       <div className={styles.cost}>
         <h4>{pizza.price} RUB</h4>
       </div>
     </div>
   );
-}
+};
 
 export default PizzaFull;

@@ -5,7 +5,7 @@ import cartEmptyImg from "../../assets/img/empty-cart.png";
 
 import styles from "./CartEmpty.module.scss";
 
-function CartEmpty() {
+const CartEmpty: React.FC = () => {
   return (
     <div className={styles.root}>
       <h2>
@@ -22,6 +22,6 @@ function CartEmpty() {
       </Link>
     </div>
   );
-}
+};
 
 export default CartEmpty;

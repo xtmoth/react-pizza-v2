@@ -5,12 +5,28 @@ import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
 
 import styles from "./PizzaBlock.module.scss";
 
-function PizzaBlock({ id, title, price, imgUrl, sizes, types }) {
+type PizzaBlockProps = {
+  id: string;
+  title: string;
+  price: number;
+  imgUrl: string;
+  sizes: number[];
+  types: number[];
+};
+
+const PizzaBlock: React.FC<PizzaBlockProps> = ({
+  id,
+  title,
+  price,
+  imgUrl,
+  sizes,
+  types,
+}) => {
   const dispatch = useDispatch();
   const cartItem = useSelector(selectCartItemById(id));
 
-  const [activeType, setActiveType] = React.useState(0);
-  const [activeSize, setActiveSize] = React.useState(0);
+  const [activeType, setActiveType] = React.useState<number>(0);
+  const [activeSize, setActiveSize] = React.useState<number>(0);
 
   const typeNames = ["тонкое", "традиционное"];
 
@@ -104,6 +120,6 @@ function PizzaBlock({ id, title, price, imgUrl, sizes, types }) {
       </div>
     </div>
   );
-}
+};
 
 export default PizzaBlock;

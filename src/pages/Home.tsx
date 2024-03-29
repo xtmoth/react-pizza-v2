@@ -19,8 +19,8 @@ import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from "../components/Pagination";
 
-function Home() {
-  const navigate = useNavigate("");
+const Home: React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
@@ -29,11 +29,11 @@ function Home() {
     useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
 
-  const onChangeCategory = (id) => {
+  const onChangeCategory = (id: number) => {
     dispatch(setCategoryId(id));
   };
 
-  const onChangePage = (number) => {
+  const onChangePage = (number: number) => {
     dispatch(setPageCurrent(number));
   };
 
@@ -44,6 +44,7 @@ function Home() {
     const search = searchValue ? `&search=${searchValue}` : "";
 
     dispatch(
+      // @ts-ignore
       fetchPizzas({
         category,
         order,
@@ -103,7 +104,7 @@ function Home() {
       );
       console.log(
         "После сохранения параметров в Редакс новый sortProperty теперь такой:\n",
-        sort.sortProperty
+        sort?.sortProperty
       );
 
       dispatch(
@@ -143,7 +144,7 @@ function Home() {
     <Skeleton key={index} />
   ));
 
-  const pizzaBlocks = items.map((obj) =>
+  const pizzaBlocks = items.map((obj: any) =>
     status === "loading" ? (
       <Skeleton />
     ) : (
@@ -158,7 +159,7 @@ function Home() {
       <div className="layout">
         <Categories
           categoryId={categoryId}
-          onChangeCategory={(id) => onChangeCategory(id)}
+          onChangeCategory={(id: any) => onChangeCategory(id)}
         />
         <div className="layout1">
           <Sort />
@@ -188,6 +189,6 @@ function Home() {
       <Pagination pageCurrent={pageCurrent} onChangePage={onChangePage} />
     </>
   );
-}
+};
 
 export default Home;

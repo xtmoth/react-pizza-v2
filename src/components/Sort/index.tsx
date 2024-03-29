@@ -5,7 +5,12 @@ import { selectSort, setSortTypeObj } from "../../redux/slices/filterSlice";
 
 import styles from "./Sort.module.scss";
 
-export const sortTypes = [
+type SortTypesItem = {
+  name: string;
+  sortProperty: string;
+};
+
+export const sortTypes: SortTypesItem[] = [
   { name: "популярности ⬇", sortProperty: "rating" },
   {
     name: "популярности ⬆",
@@ -20,18 +25,18 @@ export const sortTypes = [
 function Sort() {
   const dispatch = useDispatch();
   const sortTypeObj = useSelector(selectSort);
-  const sortRef = React.useRef();
+  const sortRef = React.useRef<HTMLDivElement>(null);
 
   const [open, setOpen] = React.useState(false);
 
-  const onClickSort = (obj) => {
+  const onClickSort = (obj: SortTypesItem) => {
     dispatch(setSortTypeObj(obj));
     setOpen(false);
   };
 
   // Closing of Sort pop-up when clicking outside
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: any) => {
       if (!event.composedPath().includes(sortRef.current)) {
         setOpen(false);
       }

@@ -5,7 +5,25 @@ import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice";
 
 import styles from "./CartItem.module.scss";
 
-function CartItem({ id, title, type, size, price, count, imgUrl }) {
+type CartItemProps = {
+  id: string;
+  title: string;
+  type: string;
+  size: number;
+  price: number;
+  count: number;
+  imgUrl: string;
+};
+
+const CartItem: React.FC<CartItemProps> = ({
+  id,
+  title,
+  type,
+  size,
+  price,
+  count,
+  imgUrl,
+}) => {
   const dispatch = useDispatch();
 
   const onClickPlus = () => {
@@ -54,6 +72,6 @@ function CartItem({ id, title, type, size, price, count, imgUrl }) {
       </div>
     </div>
   );
-}
+};
 
 export default CartItem;

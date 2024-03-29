@@ -1,15 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import MainLayout from "./layouts/MainLayout.jsx";
-import Header from "./components/Header";
-import Home from "./pages/Home.jsx";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import NotFound from "./pages/NotFound.jsx";
+import NotFound from "./pages/NotFound";
 import PizzaFull from "./pages/PizzaFull";
 import "./scss/app.scss";
-
-export const SearchContext = React.createContext();
 
 function App() {
   return (

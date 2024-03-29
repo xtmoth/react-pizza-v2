@@ -1,7 +1,15 @@
 import React from "react";
 import styles from "./Categories.module.scss";
 
-function Categories({ categoryId, onChangeCategory }) {
+type CategoriesProps = {
+  categoryId: number;
+  onChangeCategory: any;
+};
+
+const Categories: React.FC<CategoriesProps> = ({
+  categoryId,
+  onChangeCategory,
+}) => {
   const categoryNames = [
     "Все",
     "Мясные",
@@ -28,6 +36,6 @@ function Categories({ categoryId, onChangeCategory }) {
       </ul>
     </div>
   );
-}
+};
 
 export default Categories;
