@@ -3,22 +3,22 @@ import styles from "./Categories.module.scss";
 
 type CategoriesProps = {
   categoryId: number;
-  onChangeCategory: any;
+  onChangeCategory: (index: number) => void;
 };
+
+const categoryNames = [
+  "Все",
+  "Мясные",
+  "Вегетарианские",
+  "Гриль",
+  "Острые",
+  "Закрытые",
+];
 
 const Categories: React.FC<CategoriesProps> = ({
   categoryId,
   onChangeCategory,
 }) => {
-  const categoryNames = [
-    "Все",
-    "Мясные",
-    "Вегетарианские",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
-
   return (
     <div className={styles.root}>
       <ul className={styles.list}>
