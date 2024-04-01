@@ -131,3 +131,52 @@ body {
     color: $black;
   }
 }
+
+// Cart Item
+
+.countBtn {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid $red;
+
+  &:hover {
+    background-color: $red;
+
+    span {
+      color: $white;
+    }
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &Disabled {
+    opacity: 0.2;
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+
+      span {
+        color: $red;
+      }
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
+
+  span {
+    font-size: 17px;
+    font-weight: 800;
+    color: $red;
+  }
+}

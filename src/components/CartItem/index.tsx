@@ -1,4 +1,5 @@
 import React from "react";
+import clsx from "clsx";
 import { useDispatch } from "react-redux";
 
 import {
@@ -65,9 +66,20 @@ const CartItemBlock: React.FC<CartItemProps> = ({
       </div>
 
       <div className={styles.number}>
-        <button onClick={onClickMinus}>-</button>
+        <button
+          onClick={onClickMinus}
+          disabled={count === 1}
+          // className={clsx("countBtn", {
+          //   "countBtnDisabled": count === 1,
+          // })}
+          className={clsx("countBtn", {
+            "countBtnDisabled": count === 1,
+          })}
+        >
+          <span>-</span>
+        </button>
         <div>{count}</div>
-        <button onClick={onClickPlus}>+</button>
+        <button onClick={onClickPlus} className="countBtn"><span>+</span></button>
       </div>
       <div className={styles.cost}>
         {price * count} <span> ₽</span>
