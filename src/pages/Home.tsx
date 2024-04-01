@@ -34,9 +34,9 @@ const Home: React.FC = () => {
     useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
 
-  const onChangeCategory = (id: number) => {
+  const onChangeCategory = React.useCallback((id: number) => {
     dispatch(setCategoryId(id));
-  };
+  }, []);
 
   const onChangePage = (number: number) => {
     dispatch(setPageCurrent(number));
@@ -170,7 +170,7 @@ const Home: React.FC = () => {
           onChangeCategory={(id: any) => onChangeCategory(id)}
         />
         <div className="layout1">
-          <SortPopup />
+          <SortPopup value={sortTypeObj} />
           <Search />
         </div>
       </div>
