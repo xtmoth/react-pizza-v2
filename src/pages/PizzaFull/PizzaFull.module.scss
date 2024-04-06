@@ -1,4 +1,27 @@
 @import "../../scss/variables";
 
 .root {
+  .back {
+    button {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      border: 1px solid $red;
+      border-radius: 10px;
+      color: $red;
+      padding: 5px 10px;
+
+      .text {
+        font-size: 16px;
+      }
+
+      &:hover {
+        background-color: $red;
+
+        .text {
+          color: $white;
+        }
+      }
+    }
+  }
 }

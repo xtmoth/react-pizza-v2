@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import styles from "./PizzaFull.module.scss";
 
@@ -44,6 +44,13 @@ export const PizzaFull: React.FC = () => {
       <div className={styles.cost}>
         <h4>{pizza.price} RUB</h4>
       </div>
+      <Link to="/">
+        <div className={styles.back}>
+          <button>
+            <span className={styles.text}>Назад</span>
+          </button>
+        </div>
+      </Link>
     </div>
   );
 };
