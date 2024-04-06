@@ -5,7 +5,7 @@ import cartEmptyImg from "../../assets/img/empty-cart.png";
 
 import styles from "./CartEmpty.module.scss";
 
-const CartEmpty: React.FC = () => (
+export const CartEmpty: React.FC = () => (
   <div className={styles.root}>
     <h2>
       Корзина пустая <span>😕</span>
@@ -21,5 +21,3 @@ const CartEmpty: React.FC = () => (
     </Link>
   </div>
 );
-
-export default CartEmpty;

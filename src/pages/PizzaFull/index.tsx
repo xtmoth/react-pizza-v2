@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import styles from "./PizzaFull.module.scss";
 
-const PizzaFull: React.FC = () => {
+export const PizzaFull: React.FC = () => {
   const [pizza, setPizza] = React.useState<{
     imgUrl: string;
     title: string;
@@ -47,5 +47,3 @@ const PizzaFull: React.FC = () => {
     </div>
   );
 };
-
-export default PizzaFull;

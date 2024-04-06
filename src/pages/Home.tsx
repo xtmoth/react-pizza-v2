@@ -16,12 +16,14 @@ import { useAppDispatch } from "../redux/store";
 
 import { sortTypes } from "../components/Sort";
 
-import Categories from "../components/Categories";
-import Search from "../components/Search";
-import SortPopup from "../components/Sort";
-import PizzaBlock from "../components/PizzaBlock";
-import Skeleton from "../components/PizzaBlock/Skeleton";
-import Pagination from "../components/Pagination";
+import {
+  Categories,
+  Search,
+  Sort,
+  PizzaBlock,
+  Skeleton,
+  Pagination,
+} from "../components";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -169,7 +171,7 @@ const Home: React.FC = () => {
           onChangeCategory={(id: any) => onChangeCategory(id)}
         />
         <div className="layout1">
-          <SortPopup value={sortTypeObj} />
+          <Sort value={sortTypeObj} />
           <Search />
         </div>
       </div>

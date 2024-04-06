@@ -16,7 +16,7 @@ const categoryNames = [
   "Закрытые",
 ];
 
-const Categories: React.FC<CategoriesProps> = React.memo(
+export const Categories: React.FC<CategoriesProps> = React.memo(
   ({ categoryId, onChangeCategory }) => {
     return (
       <div className={styles.root}>
@@ -37,5 +37,3 @@ const Categories: React.FC<CategoriesProps> = React.memo(
     );
   }
 );
-
-export default Categories;

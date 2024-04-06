@@ -6,7 +6,7 @@ import { selectCart } from "../../redux/cart/selectors";
 
 import styles from "./Header.module.scss";
 
-function Header() {
+export const Header: React.FC = () => {
   const { items, totalPrice } = useSelector(selectCart);
   const location = useLocation();
   const isMounted = React.useRef(false);
@@ -158,6 +158,4 @@ function Header() {
       )}
     </div>
   );
-}
-
-export default Header;
+};
