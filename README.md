@@ -1,7 +1,5 @@
 ## FEATURES
 
----
-
 - Adaptive styles `CSS @media query`
 - Recieving pizzas from backend `MockAPI`
 - State managing `Redux Toolkit`
@@ -17,8 +15,6 @@
 - Dynamic imports `React Loadable, React.lazy`
 
 ## LIBRARIES
-
----
 
 - Server request: `axios`
 - Skeleton (ContentLoader): `react-content-loader`
