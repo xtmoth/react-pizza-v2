@@ -1,3 +1,5 @@
+![https://kristina-mukha.github.io/react-pizza-v2/](https://github.com/kristina-mukha/kristina-mukha/blob/main/react-pizza.JPG)
+
 ## FEATURES
 
 - Adaptive styles `CSS @media query`
