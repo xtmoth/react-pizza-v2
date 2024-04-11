@@ -1,4 +1,4 @@
-![https://github.com/kristina-mukha/kristina-mukha/blob/main/react-pizza.JPG](https://kristina-mukha.github.io/react-pizza-v2/)
+[![React Pizza Demo](https://github.com/kristina-mukha/kristina-mukha/blob/main/react-pizza.JPG 'Watch React Pizza Demo')](https://kristina-mukha.github.io/react-pizza-v2/)
 
 ## FEATURES
 
