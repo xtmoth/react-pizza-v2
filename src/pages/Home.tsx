@@ -68,7 +68,7 @@ const Home: React.FC = () => {
       const queryString = qs.stringify({
         pageCurrent,
         categoryId,
-        sortProperty: sortTypeObj.sortProperty,
+        sortBy: sortTypeObj.sortProperty,
       });
 
       navigate(`?${queryString}`);
@@ -96,34 +96,60 @@ const Home: React.FC = () => {
       console.log(
         "Произошёл парсинг заданных параметров фильтрации и/или сортировки"
       );
+      console.log("PARAMS: \n", params);
+
       console.log(
         "Параметры после парсинга: \n",
         "pageCurrent = ",
         params.pageCurrent,
         "\n",
-        "categoryId =",
+        "category =",
         params.category,
         "\n",
+        "categoryId =",
+        categoryId,
+        "\n",
         "sort =",
-        sort
+        sort,
+        "\n",
+        "sortTypeObj =",
+        sortTypeObj
       );
 
+      if (sort) {
+        dispatch(
+          setFilters({
+            pageCurrent: Number(params.pageCurrent),
+            categoryId: Number(params.category),
+
+            // sortTypeObj,
+            // --- @ts-ignore
+            sortTypeObj: sort,
+            searchValue: params.search,
+          })
+        );
+
+        dispatch(setCategoryId(Number(params.category)));
+      }
       console.log(
         "Произошло сохранение заданных параметров фильтрации и/или сортировки в Редакс"
       );
       console.log(
-        "После сохранения параметров в Редакс новый sortProperty теперь такой:\n",
-        sort?.sortProperty
+        "После сохранения параметров в Редакс новый sort теперь такой:\n",
+        sort,
+        "с типом значения",
+        typeof sort,
+        "\n а новый sortTypeObj теперь такой:",
+        sortTypeObj,
+        "(тип значения: ",
+        typeof sortTypeObj,
+        ")",
+        "\n a categoryId теперь такой:\n",
+        categoryId,
+        "с типом значения",
+        typeof categoryId
       );
 
-      dispatch(
-        setFilters({
-          pageCurrent: Number(params.pageCurrent),
-          categoryId: Number(params.category),
-          sortTypeObj,
-          searchValue: params.search,
-        })
-      );
       isSearch.current = true;
     }
   }, []);

@@ -21,6 +21,7 @@ export const filterSlice = createSlice({
     },
     setSortTypeObj(state, action: PayloadAction<Sort>) {
       state.sortTypeObj = action.payload;
+      console.log("STATE CHANGED: setSortTypeObj");
     },
     setPageCurrent(state, action: PayloadAction<number>) {
       state.pageCurrent = action.payload;
@@ -30,6 +31,7 @@ export const filterSlice = createSlice({
         state.pageCurrent = Number(action.payload.pageCurrent);
         state.categoryId = Number(action.payload.categoryId);
         state.sortTypeObj = action.payload.sortTypeObj;
+        console.log("STATE CHANGED: setFilters");
       } else {
         state.pageCurrent = 1;
         state.categoryId = 0;
@@ -37,6 +39,7 @@ export const filterSlice = createSlice({
           name: "популярности ⬇",
           sortProperty: SortPropertyEnum.RATING_DESC,
         };
+        console.log("STATE CHANGED: setFilters ELSE");
       }
     },
     setSearchValue(state, action: PayloadAction<string>) {

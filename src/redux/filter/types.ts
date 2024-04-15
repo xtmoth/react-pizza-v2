@@ -9,7 +9,8 @@ export enum SortPropertyEnum {
 
 export type Sort = {
   name: string;
-  sortProperty: "rating" | "title" | "price" | "-rating" | "-title" | "-price";
+  // sortProperty: "rating" | "title" | "price" | "-rating" | "-title" | "-price";
+  sortProperty: SortPropertyEnum;
 };
 
 export interface FilterSliceState {
