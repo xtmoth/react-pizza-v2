@@ -1,6 +1,6 @@
 [![React Pizza Demo](https://github.com/kristina-mukha/kristina-mukha/blob/main/react-pizza.JPG 'Смотреть демо')](https://kristina-mukha.github.io/react-pizza-v2/)
 
-## FEATURES
+## ФУНКЦИОНАЛ
 
 - Адаптивные стили `CSS @media query`
 - Получение пицц с бэкенда `MockAPI`
@@ -16,7 +16,7 @@
 - Оптимизация для JS build `Code Splitting, Tree Shaking, Reexport`
 - Динамический импорт `React Loadable, React.lazy`
 
-## LIBRARIES
+## БИБЛИОТЕКИ
 
 - Запрос на сервер: `axios`
 - Скелетон (ContentLoader): `react-content-loader`
