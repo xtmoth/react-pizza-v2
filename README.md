@@ -1,6 +1,6 @@
 ## ДЕМО
 
-[![Github Pages](https://img.shields.io/badge/github%20pages-react%20pizza-121013?style=for-the-badge&logo=github&logoColor=white 'React Pizza | Смотреть демо')](https://kristina-mukha.github.io/react-pizza-v2/)  
+[![Github Pages](https://img.shields.io/badge/github%20pages-react%20pizza-121013?style=for-the-badge&logo=github&logoColor=white 'React Pizza | Смотреть демо')](https://xxtkris.github.io/react-pizza-v2/)  
 
 ## ТЕХНОЛОГИИ
 
